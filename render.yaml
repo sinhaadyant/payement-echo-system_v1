@@ -13,18 +13,7 @@ services:
         value: 8080
       - key: SPRING_PROFILES_ACTIVE
         value: production
-      - key: SPRING_DATASOURCE_URL
-        sync: false  # Set this in Render dashboard
-      - key: SPRING_DATASOURCE_USERNAME
-        sync: false  # Set this in Render dashboard
-      - key: SPRING_DATASOURCE_PASSWORD
-        sync: false  # Set this in Render dashboard
+      # Note: DATABASE_URL will be automatically added when you link the PostgreSQL database
+      # Create the database manually in Render dashboard, then link it to this service
     healthCheckPath: /actuator/health
-
-  - type: pspg
-    name: payment-echo-db
-    plan: free
-    databaseName: payment_echo_db
-    databaseUser: paymentuser
-    postgresMajorVersion: 15
 
