@@ -22,7 +22,7 @@ class DebtorResolver(private val debtorService: DebtorService) {
     ): DebtorPage {
         val pageNum = page ?: 0
         val sizeNum = size ?: 20
-        val debtorPage = debtorService.findAll(pageNum, sizeNum, sort)
+        val debtorPage = debtorService.findAll(pageNum, sizeNum, sort, null, null)
         return DebtorPage(
             debtors = debtorPage.content.map { it.toGraphQL() },
             total = debtorPage.totalElements.toInt(),
@@ -45,7 +45,7 @@ class DebtorResolver(private val debtorService: DebtorService) {
     ): DebtorPage {
         val pageNum = page ?: 0
         val sizeNum = size ?: 20
-        val debtorPage = debtorService.findAll(pageNum, sizeNum, null, name)
+        val debtorPage = debtorService.findAll(pageNum, sizeNum, null, name, null)
         return DebtorPage(
             debtors = debtorPage.content.map { it.toGraphQL() },
             total = debtorPage.totalElements.toInt(),

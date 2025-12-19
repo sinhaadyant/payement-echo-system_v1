@@ -23,7 +23,7 @@ class PaymentResolver(private val paymentService: PaymentService) {
     ): PaymentPage {
         val pageNum = page ?: 0
         val sizeNum = size ?: 20
-        val paymentPage = paymentService.findAll(pageNum, sizeNum, sort)
+        val paymentPage = paymentService.findAll(pageNum, sizeNum, sort, null, null, null, null)
         return PaymentPage(
             payments = paymentPage.content.map { it.toGraphQL() },
             total = paymentPage.totalElements.toInt(),
@@ -35,7 +35,7 @@ class PaymentResolver(private val paymentService: PaymentService) {
 
     @QueryMapping
     fun payment(@Argument id: String): PaymentResponse {
-        return paymentService.findById(UUID.fromString(id))
+        return paymentService.findByIdResponse(UUID.fromString(id))
     }
 
     @QueryMapping
@@ -46,7 +46,7 @@ class PaymentResolver(private val paymentService: PaymentService) {
     ): PaymentPage {
         val pageNum = page ?: 0
         val sizeNum = size ?: 20
-        val paymentPage = paymentService.findAll(pageNum, sizeNum, null, status, null)
+        val paymentPage = paymentService.findAll(pageNum, sizeNum, null, status, null, null, null)
         return PaymentPage(
             payments = paymentPage.content.map { it.toGraphQL() },
             total = paymentPage.totalElements.toInt(),
@@ -64,7 +64,7 @@ class PaymentResolver(private val paymentService: PaymentService) {
     ): PaymentPage {
         val pageNum = page ?: 0
         val sizeNum = size ?: 20
-        val paymentPage = paymentService.findAll(pageNum, sizeNum, null, null, currency)
+        val paymentPage = paymentService.findAll(pageNum, sizeNum, null, null, currency, null, null)
         return PaymentPage(
             payments = paymentPage.content.map { it.toGraphQL() },
             total = paymentPage.totalElements.toInt(),
