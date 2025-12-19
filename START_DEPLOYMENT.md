@@ -15,14 +15,35 @@
 
 👉 **https://dashboard.render.com**
 
-### Step 2: Create Blueprint (Easiest Method)
+### Step 2: Create PostgreSQL Database First
+
+**Important:** Database must be created manually before creating the web service.
+
+1. Click **"New +"** → **"PostgreSQL"**
+2. **Configure:**
+   - Name: `payment-echo-db`
+   - Database: `payment_echo_db`
+   - Plan: **Free**
+3. Click **"Create Database"**
+4. Wait for green status ✅
+
+### Step 3: Create Web Service (Using Blueprint)
 
 1. Click **"New +"** → **"Blueprint"**
 2. **Connect GitHub** (if first time, authorize Render)
 3. **Select Repository**: `sinhaadyant/payement-echo-system_v1`
 4. **Select Branch**: `feature/deloitte-adyant-payment-enhancements` (or `main` if you prefer)
 5. Click **"Apply"**
-6. ✅ **Done!** Render creates everything automatically
+6. Render creates the web service
+
+### Step 4: Link Database
+
+1. Go to your **Web Service** → **Settings**
+2. Scroll to **"Linked Resources"**
+3. Click **"Link Resource"**
+4. Select `payment-echo-db`
+5. Click **"Link"**
+6. ✅ `DATABASE_URL` is automatically added!
 
 ### Step 3: Wait & Test
 
