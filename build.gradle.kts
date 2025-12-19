@@ -26,6 +26,18 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-aop")
 
+    // Actuator for observability & diagnostics
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+
+    // JSON structured logging using Logback
+    implementation("net.logstash.logback:logstash-logback-encoder:7.4")
+
+    // Micrometer + Prometheus (optional)
+    implementation("io.micrometer:micrometer-registry-prometheus")
+
+    // Validation
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
 
@@ -48,8 +60,14 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
+
+    // OpenAPI + Swagger UI
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
+    implementation("org.springdoc:springdoc-openapi-starter-common:2.5.0")
+
 }
+
+
 
 kotlin {
     // New compiler DSL for Kotlin 2.x

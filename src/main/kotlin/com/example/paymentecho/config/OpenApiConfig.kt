@@ -1,40 +1,42 @@
 package com.example.paymentecho.config
 
-import io.swagger.v3.oas.models.OpenAPI
+import io.swagger.v3.oas.models.ExternalDocumentation
 import io.swagger.v3.oas.models.info.Contact
 import io.swagger.v3.oas.models.info.Info
 import io.swagger.v3.oas.models.info.License
-import io.swagger.v3.oas.models.servers.Server
+import io.swagger.v3.oas.models.OpenAPI
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
+/**
+ * OpenAPI/Swagger configuration for API documentation.
+ * This metadata shows up in Swagger UI and the generated OpenAPI spec.
+ */
 @Configuration
 class OpenApiConfig {
 
     @Bean
-    fun customOpenAPI(): OpenAPI {
-        return OpenAPI()
+    fun paymentEchoOpenAPI(): OpenAPI =
+        OpenAPI()
             .info(
                 Info()
-                    .title("Payment Echo System API")
+                    .title("Payment Echo API")
+                    .description("Production-grade Payment Echo microservice built with Kotlin & Spring Boot 4.")
                     .version("1.0.0")
-                    .description("REST API for managing payments, creditors, and debtors")
                     .contact(
                         Contact()
-                            .name("API Support")
-                            .email("support@example.com")
+                            .name("Payment Echo Team")
+                            .email("support@paymentecho.example")
                     )
                     .license(
                         License()
                             .name("Apache 2.0")
-                            .url("https://www.apache.org/licenses/LICENSE-2.0.html")
+                            .url("https://www.apache.org/licenses/LICENSE-2.0")
                     )
             )
-            .servers(
-                listOf(
-                    Server().url("http://localhost:8080").description("Local development server"),
-                    Server().url("https://api.example.com").description("Production server")
-                )
+            .externalDocs(
+                ExternalDocumentation()
+                    .description("Project Documentation")
+                    .url("https://docs.paymentecho.example")
             )
-    }
 }
