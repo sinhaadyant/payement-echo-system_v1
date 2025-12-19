@@ -112,3 +112,4 @@ GraphQL error messages will be in the selected language.
 ✅ **Easy Testing**: Quickly test all languages  
 ✅ **Consistent**: All REST and GraphQL APIs use the same language  
 ✅ **User-Friendly**: Dropdown makes language selection easy
+

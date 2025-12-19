@@ -424,3 +424,4 @@ query {
 - [GraphQL Official Documentation](https://graphql.org/learn/)
 - [Spring GraphQL Documentation](https://docs.spring.io/spring-graphql/docs/current/reference/html/)
 - REST API Documentation: `http://localhost:8080/swagger-ui.html`
+

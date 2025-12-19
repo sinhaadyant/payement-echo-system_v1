@@ -35,7 +35,14 @@ dependencies {
     // GraphQL
     implementation("org.springframework.boot:spring-boot-starter-graphql")
 
-    runtimeOnly("com.h2database:h2")
+    // MySQL Database (for local development)
+    runtimeOnly("com.mysql:mysql-connector-j")
+    
+    // PostgreSQL Database (for Render deployment)
+    runtimeOnly("org.postgresql:postgresql")
+    
+    // H2 Database (for testing only)
+    testRuntimeOnly("com.h2database:h2")
 
     // Spring Boot DevTools for hot reload
     developmentOnly("org.springframework.boot:spring-boot-devtools")

@@ -24,7 +24,7 @@ A comprehensive Spring Boot application for managing payments, creditors, and de
 
 - **Language**: Kotlin 2.0.21
 - **Framework**: Spring Boot 3.3.5
-- **Database**: H2 (In-Memory)
+- **Database**: MySQL 8.0 (H2 for testing)
 - **Build Tool**: Gradle
 - **API Documentation**: SpringDoc OpenAPI
 - **Testing**: JUnit 5, MockMvc
@@ -263,12 +263,48 @@ See [HOT_RELOAD_GUIDE.md](HOT_RELOAD_GUIDE.md) for detailed setup instructions.
 
 ## Database
 
-The application uses H2 in-memory database. Access the H2 console at:
+The application uses **MySQL** database. 
 
-- URL: `http://localhost:8080/h2-console`
-- JDBC URL: `jdbc:h2:mem:paymentdb`
-- Username: `sa`
-- Password: (empty)
+### Setup MySQL
+
+#### Option 1: Using Docker Compose (Recommended)
+
+```bash
+# Start MySQL and application
+docker-compose up -d
+
+# Or start only MySQL
+docker-compose up -d mysql
+```
+
+#### Option 2: Local MySQL Installation
+
+1. Install MySQL 8.0 or higher
+2. Create database:
+   ```sql
+   CREATE DATABASE payment_echo_db;
+   ```
+3. Update `application.properties` with your MySQL credentials:
+   ```properties
+   spring.datasource.url=jdbc:mysql://localhost:3306/payment_echo_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
+   spring.datasource.username=your_username
+   spring.datasource.password=your_password
+   ```
+
+### Default Configuration
+
+- **Host**: `localhost:3306`
+- **Database**: `payment_echo_db`
+- **Username**: `root` (default, change in production)
+- **Password**: `root` (default, change in production)
+
+### Database Management
+
+- The database schema will be automatically created/updated on startup (`spring.jpa.hibernate.ddl-auto=update`)
+- Use MySQL Workbench, DBeaver, or any MySQL client to manage the database
+- Connection string: `jdbc:mysql://localhost:3306/payment_echo_db`
+
+**Note**: For testing, the application still uses H2 in-memory database (configured in `application-test.properties`).
 
 ## Validation Rules
 

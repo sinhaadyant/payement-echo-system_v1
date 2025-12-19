@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: payment-echo-system
+    runtime: java
+    plan: free
+    buildCommand: ./gradlew clean build -x test
+    startCommand: java -jar build/libs/payment-echo-system-0.0.1-SNAPSHOT.jar
+    autoDeploy: true  # Automatically deploy on git push
+    envVars:
+      - key: JAVA_VERSION
+        value: 17
+      - key: PORT
+        value: 8080
+      - key: SPRING_PROFILES_ACTIVE
+        value: production
+      - key: SPRING_DATASOURCE_URL
+        sync: false  # Set this in Render dashboard
+      - key: SPRING_DATASOURCE_USERNAME
+        sync: false  # Set this in Render dashboard
+      - key: SPRING_DATASOURCE_PASSWORD
+        sync: false  # Set this in Render dashboard
+    healthCheckPath: /actuator/health
+
+  - type: pspg
+    name: payment-echo-db
+    plan: free
+    databaseName: payment_echo_db
+    databaseUser: paymentuser
+    postgresMajorVersion: 15
+

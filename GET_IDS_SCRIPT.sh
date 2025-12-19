@@ -32,3 +32,4 @@ echo "Command:"
 echo "curl -X 'POST' 'http://localhost:8080/api/v1/payments' \\"
 echo "  -H 'Content-Type: application/json' \\"
 echo "  -d '{\"amount\": 1500.00, \"currency\": \"USD\", \"status\": \"RECEIVED\", \"creditorId\": \"$CREDITOR_ID\", \"debtorId\": \"$DEBTOR_ID\"}'"
+

@@ -143,3 +143,4 @@ echo "  ! = Expected error (4xx status)"
 echo "  ✗ = Failure (unexpected status)"
 echo "  ✓ = Localized (contains non-ASCII characters)"
 echo "  ? = May not be localized"
+
